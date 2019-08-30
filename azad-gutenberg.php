@@ -7,22 +7,31 @@ Author: Md. Abul Kalam Azad
 Author URI: gittechs.com/author
 Author Email: webdevazad@gmail.com
 Version: 0.0.0.1
+License: GPL2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: azad-gutenberg
+Domain Path: /languages
 */
 if(! defined('ABSPATH')) exit;
 class Azad_Gutenberg{
     public function __construct(){
-        add_action('enqueue_block_editor_assets',array($this,'azad_enqueue_scripts'),1);
+        add_action('plugins_loaded',array($this,'constants'),1);
     }
-    public function azad_enqueue_scripts(){
-        wp_enqueue_script('azad-gutenberg',plugin_dir_url(__FILE__).'azad-gutenberg.js',array('wp-blocks','wp-i18n','wp-editor'),true);
+    public function constants(){
+        //echo 'Constants';
+    }
+    public function i18n(){
+        //echo 'i18n';
     }
     public function includes(){
-        //
+        define('ADMIN',plugin_dir_path(__FILE__));
+        require_once(ADMIN.'inc/functions.php');
     }
     public function admin(){
-        //
+        if(is_admin()){
+            require_once(ADMIN.'admin/admin.php');            
+        }
     }
     public function __destruct(){}
 }
-new Azad_Gutenberg();
+new Azad_Scroll_Top();
