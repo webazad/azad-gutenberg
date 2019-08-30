@@ -1,25 +1,6 @@
-//wp.blocks.registerBlockType('azad/azad-gutenberg',{
-//    title: 'Azad Gutenberg',
-//    icon: 'smiley',
-//    category: 'common',
-//    attributes: {
-//        content:{type:'string'},
-//        color:{type:'string'}
-//    },
-//    edit: function(props){
-//        return wp.element.createElement(
-//            'h3',
-//            null,
-//            'asdf'
-//        );
-//    },
-//    save: function(props){
-//        return null;
-//    }
-//});
-
-wp.blocks.registerBlockType('azad/azad-blocks',{
-    title: 'Azad Gutenberg',
+wp.blocks.registerBlockType('azad/azad-block',{
+    title: wp.i18n.__('Azad Gutenberg'),
+    description: wp.i18n.__('Azad Description'),
     icon: 'smiley',
     category: 'common',
     attributes: {
@@ -27,13 +8,9 @@ wp.blocks.registerBlockType('azad/azad-blocks',{
         color:{type:'string'}
     },
     edit: function(props){
-        return wp.element.createElement(
-            'h3',
-            null,
-            'asdf'
-        );
+        return wp.element.createElement('p',{className:'azad'},'Hello world');
     },
     save: function(props){
-        return null;
+        return wp.element.createElement('p',{className:'azad'},'Hello Bangladesh');
     }
 });
