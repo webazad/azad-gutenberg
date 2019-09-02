@@ -83,30 +83,82 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
-var registerBlockType = wp.block.registerBlockType;
+var registerBlockType = wp.blocks.registerBlockType;
+var RichText = wp.editor.RichText;
+var __ = wp.i18n.__;
 registerBlockType('azad/azad-block', {
-  title: wp.i18n.__('Azad Gutenberg'),
-  description: wp.i18n.__('Azad Description'),
+  title: __('Azad Gutenberg'),
+  description: __('Azad Description'),
   icon: 'smiley',
   category: 'layout',
   attributes: {
     content: {
-      type: 'string'
-    },
-    color: {
-      type: 'string'
+      type: 'array',
+      source: 'children',
+      selector: 'div'
     }
   },
-  edit: function edit(_ref) {
-    var className = _ref.className;
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: className
-    }, "Hello world!");
+  edit: function edit(props) {
+    var attributes = props.attributes,
+        setAttributes = props.setAttributes;
+
+    var onChangeContent = function onChangeContent(newContent) {
+      setAttributes({
+        content: newContent
+      });
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      tagName: "div" //className={className}
+      ,
+      onChange: onChangeContent,
+      value: attributes.content,
+      placeholder: __('Write here please...')
+    });
   },
-  save: function save() {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, "Hello world");
+  save: function save(props) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      tagName: "div",
+      value: props.attributes.content
+    });
   }
-});
+}); // const { registerBlockType } = wp.blocks;
+// const { RichText } = wp.editor;
+// registerBlockType('azad/azad-block',{
+// title: wp.i18n.__('Azad Gutenberg'),
+// description: wp.i18n.__('Azad Description'),
+// icon: 'smiley',
+// category: 'layout',
+// attributes: {
+// content:{
+// type:'array',
+// source:'children',
+// selector:'div'
+// }
+// },
+// edit: (props) => {
+// const {attributes, setAttributes} = props;
+// const onChangeContent = (newContent) => {
+// setAttributes({content: newContent})
+// }
+// return (
+// <RichText 
+// tagName="div"
+// onChange={onChangeContent}
+// value={attributes.content}
+// />
+// )
+// },
+// save: (props) => {
+// return (
+// <RichText.Content 
+// tagName="div"
+// className="azad-container"
+// value={props.attributes.content}
+// />
+// )
+// }
+// });
 
 /***/ }),
 

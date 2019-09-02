@@ -23,8 +23,9 @@ if(! defined('ABSPATH')) exit;
             // FOR GUTENBERG CORE JS
             wp_register_script(
                 'azad-gutenberg',
-                plugins_url('/azad-gutenberg.js',__FILE__),
+                plugins_url('/build/index.js',__FILE__),
                 array('wp-blocks','wp-element','wp-components','wp-i18n'),
+				filemtime(plugin_dir_path(__FILE__).'/build/index.js'),
                 true
             );
             // GUTENBERG BLOCK EDITOR STYLE
