@@ -6,7 +6,7 @@ registerBlockType('azad/azad-block',{
 	title: __('Azad Gutenberg'),
     description: __('Azad Description'),
     icon: 'smiley',
-    category: 'layout',
+    category: 'azad-gutenberg',
     attributes: {
         content:{
 			type:'array',
@@ -15,26 +15,31 @@ registerBlockType('azad/azad-block',{
 		}
     },
     edit: (props) => {
-		const {attributes, setAttributes} = props;
+		const {attributes, setAttributes, className} = props;
 		const onChangeContent = (newContent) => {
 			setAttributes({content: newContent})
 		}
 		return (
-			<RichText 
-				tagName="div"
-				//className={className}
-				onChange={onChangeContent}
-				value={attributes.content}
-				placeholder={ __( 'Write here please...' ) }
-			/>
+			<div className={className}>
+				<RichText 
+					tagName="div"
+					//className={className}
+					onChange={onChangeContent}
+					value={attributes.content}
+					placeholder={ __( 'Write here please...' ) }
+				/>
+			</div>
 		)
 	},
     save: (props) => {
+		const {attributes, setAttributes, className} = props;
 		return (
+		<div className={className}>
 			<RichText.Content 
 				tagName="div"
 				value={props.attributes.content}
 			/>
+			</div>
 		)
 	}
 });

@@ -55,8 +55,17 @@ if(! defined('ABSPATH')) exit;
     }
 //}
 
-        
-        
+function azad_gutenberg_category($categories,$post){
+	return array_merge(
+		$categories,array(
+			array(
+				'slug'=>'azad-gutenberg',
+				'title'=>'Azad Gutenberg',
+			)
+		)
+	);
+}        
+add_filter('block_categories','azad_gutenberg_category',10,2);        
         
 //function azad_gutenberg_one(){
 //    wp_enqueue_script('azad-gutenberg',

@@ -90,7 +90,7 @@ registerBlockType('azad/azad-block', {
   title: __('Azad Gutenberg'),
   description: __('Azad Description'),
   icon: 'smiley',
-  category: 'layout',
+  category: 'azad-gutenberg',
   attributes: {
     content: {
       type: 'array',
@@ -100,7 +100,8 @@ registerBlockType('azad/azad-block', {
   },
   edit: function edit(props) {
     var attributes = props.attributes,
-        setAttributes = props.setAttributes;
+        setAttributes = props.setAttributes,
+        className = props.className;
 
     var onChangeContent = function onChangeContent(newContent) {
       setAttributes({
@@ -108,19 +109,26 @@ registerBlockType('azad/azad-block', {
       });
     };
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: className
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div" //className={className}
       ,
       onChange: onChangeContent,
       value: attributes.content,
       placeholder: __('Write here please...')
-    });
+    }));
   },
   save: function save(props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+    var attributes = props.attributes,
+        setAttributes = props.setAttributes,
+        className = props.className;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: className
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       tagName: "div",
       value: props.attributes.content
-    });
+    }));
   }
 }); // const { registerBlockType } = wp.blocks;
 // const { RichText } = wp.editor;
