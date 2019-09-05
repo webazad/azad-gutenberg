@@ -4,4 +4,6 @@ import "./i18n.js";
 //import './text-alignment';
 //import './block-alignment';
 //import './multiline-text';
-import './custom-toolbar';
+//import './custom-toolbar';
+//import './inspector-control';
+import './inspector-control-fields';

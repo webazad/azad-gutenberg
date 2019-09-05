@@ -71,10 +71,47 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/custom-toolbar/icon.js":
-/*!************************************!*\
-  !*** ./src/custom-toolbar/icon.js ***!
-  \************************************/
+/***/ "./src/i18n.js":
+/*!*********************!*\
+  !*** ./src/i18n.js ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+wp.i18n.setLocaleData({
+  '': {}
+}, 'azad--gutenberg');
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _i18n_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./i18n.js */ "./src/i18n.js");
+/* harmony import */ var _i18n_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_i18n_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _inspector_control_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inspector-control-fields */ "./src/inspector-control-fields/index.js");
+ //import './heading';
+//import './background';
+//import './text-alignment';
+//import './block-alignment';
+//import './multiline-text';
+//import './custom-toolbar';
+//import './inspector-control';
+
+
+
+/***/ }),
+
+/***/ "./src/inspector-control-fields/icon.js":
+/*!**********************************************!*\
+  !*** ./src/inspector-control-fields/icon.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -97,10 +134,10 @@ var icon = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement
 
 /***/ }),
 
-/***/ "./src/custom-toolbar/index.js":
-/*!*************************************!*\
-  !*** ./src/custom-toolbar/index.js ***!
-  \*************************************/
+/***/ "./src/inspector-control-fields/index.js":
+/*!***********************************************!*\
+  !*** ./src/inspector-control-fields/index.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -108,7 +145,7 @@ var icon = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon */ "./src/custom-toolbar/icon.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon */ "./src/inspector-control-fields/icon.js");
 
 //import classnames from 'classnames';
  //import './style.scss';
@@ -120,17 +157,21 @@ var _wp$components = wp.components,
     Dashicon = _wp$components.Dashicon,
     Toolbar = _wp$components.Toolbar,
     Button = _wp$components.Button,
-    Tooltip = _wp$components.Tooltip;
+    Tooltip = _wp$components.Tooltip,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    FormToggle = _wp$components.FormToggle;
 var _wp$editor = wp.editor,
     RichText = _wp$editor.RichText,
     BlockControls = _wp$editor.BlockControls,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
-    BlockAlignmentToolbar = _wp$editor.BlockAlignmentToolbar;
+    BlockAlignmentToolbar = _wp$editor.BlockAlignmentToolbar,
+    InspectorControls = _wp$editor.InspectorControls;
 var __ = wp.i18n.__; //const { something } = wp.data;
 
-/* harmony default export */ __webpack_exports__["default"] = (registerBlockType('azad/azad-custom-toolbar', {
-  title: __('Azad Custom Toolbar', 'azad-gutenberg'),
-  description: __('Azad Custom Toolbar is a ', 'azad-gutenberg'),
+/* harmony default export */ __webpack_exports__["default"] = (registerBlockType('azad/azad-inspector-control', {
+  title: __('Azad Inspector Control', 'azad-gutenberg'),
+  description: __('Azad inspector conrol is a ', 'azad-gutenberg'),
   icon: {
     background: 'rgba(254, 243, 224, 0.52)',
     src: _icon__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -155,6 +196,12 @@ var __ = wp.i18n.__; //const { something } = wp.data;
         setAttributes = props.setAttributes,
         className = props.className;
 
+    var toggleHighContrast = function toggleHighContrast() {
+      return setAttributes({
+        highContrast: !highContrast
+      });
+    };
+
     var onChangeContent = function onChangeContent(newContent) {
       setAttributes({
         content: newContent
@@ -163,7 +210,16 @@ var __ = wp.i18n.__; //const { something } = wp.data;
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: className
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: __('High Contrast', 'jsforwpblocks')
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      htmlFor: "high-contrast-form-toggle"
+    }, __('High Contrast', 'jsforwpblocks')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(FormToggle, {
+      id: "high-contrast-form-toggle",
+      label: __('High Contrast', 'jsforwpblocks'),
+      checked: highContrast,
+      onChange: toggleHighContrast
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
       value: textAlignment,
       onChange: function onChange(textAlignment) {
         return setAttributes({
@@ -206,41 +262,6 @@ var __ = wp.i18n.__; //const { something } = wp.data;
     }));
   }
 }));
-
-/***/ }),
-
-/***/ "./src/i18n.js":
-/*!*********************!*\
-  !*** ./src/i18n.js ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-wp.i18n.setLocaleData({
-  '': {}
-}, 'azad--gutenberg');
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _i18n_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./i18n.js */ "./src/i18n.js");
-/* harmony import */ var _i18n_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_i18n_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _custom_toolbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./custom-toolbar */ "./src/custom-toolbar/index.js");
- //import './heading';
-//import './background';
-//import './text-alignment';
-//import './block-alignment';
-//import './multiline-text';
-
-
 
 /***/ }),
 
