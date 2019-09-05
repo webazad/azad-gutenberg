@@ -9,9 +9,9 @@ const { RichText, BlockControls, AlignmentToolbar } = wp.editor;
 const { __ } = wp.i18n;
 //const { something } = wp.data;
 
-export default registerBlockType('azad/azad-heading',{
-	title: __('Azad Heading','azad-gutenberg'),
-    description: __('Azad heading is a ','azad-gutenberg'),
+export default registerBlockType('azad/azad-multiline',{
+	title: __('Azad Multiline','azad-gutenberg'),
+    description: __('Azad multiline is a ','azad-gutenberg'),
 	icon: {
 		background: 'rgba(254, 243, 224, 0.52)',
         src: icon,
@@ -47,11 +47,12 @@ export default registerBlockType('azad/azad-heading',{
 				</BlockControls>
 				<RichText 
 					tagName="div"
-					//className={className}
+					multiline="p"
+					className={className}
 					onChange={onChangeContent}
 					style={{textAlign:textAlignment}}
 					value={content}
-					placeholder={ __( 'Write here please ...' ) }
+					placeholder={ __( 'Write as many lines as you needed. ...' ) }
 				/>
 			</div>
 		)
@@ -61,7 +62,7 @@ export default registerBlockType('azad/azad-heading',{
 		return (
 		<div className={className}>
 			<RichText.Content 
-				tagName="div"
+				className={className}
 				value={props.attributes.content}
 			/>
 			</div>

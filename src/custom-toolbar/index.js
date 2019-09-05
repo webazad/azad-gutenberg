@@ -4,14 +4,14 @@ import icon from './icon';
 //import './editor.scss';
 //const { Component } = wp.element;
 const { registerBlockType } = wp.blocks;
-//const { Button, CheckboxControl, RadioControl, RangeControl, TextControll, TextareaControll, ToggleCOntrol, SelectControl } = wp.components;
-const { RichText, BlockControls, AlignmentToolbar } = wp.editor;
+const { Dashicon, Toolbar, Button, Tooltip } = wp.components;
+const { RichText, BlockControls, AlignmentToolbar, BlockAlignmentToolbar } = wp.editor;
 const { __ } = wp.i18n;
 //const { something } = wp.data;
 
-export default registerBlockType('azad/azad-heading',{
-	title: __('Azad Heading','azad-gutenberg'),
-    description: __('Azad heading is a ','azad-gutenberg'),
+export default registerBlockType('azad/azad-custom-toolbar',{
+	title: __('Azad Custom Toolbar','azad-gutenberg'),
+    description: __('Azad Custom Toolbar is a ','azad-gutenberg'),
 	icon: {
 		background: 'rgba(254, 243, 224, 0.52)',
         src: icon,
@@ -33,7 +33,7 @@ export default registerBlockType('azad/azad-heading',{
 		}
     },
     edit: (props) => {
-		const {attributes:{content, textAlignment}, setAttributes, className} = props;
+		const {attributes:{content, textAlignment, highContrast}, setAttributes, className} = props;
 		const onChangeContent = (newContent) => {
 			setAttributes({content: newContent})
 		}
@@ -44,10 +44,19 @@ export default registerBlockType('azad/azad-heading',{
 						value={textAlignment}
 						onChange={textAlignment=>setAttributes({textAlignment})}
 					/>
+					<Toolbar>
+						<Tooltip text={ __( 'High Contrast', 'jsforwpblocks' )  }>
+							<Button 
+								className={ { 'is-active': highContrast }}
+								onClick={ () => setAttributes( { highContrast: ! highContrast } ) }>
+								{icon}
+							</Button>
+						</Tooltip>
+					</Toolbar>
 				</BlockControls>
 				<RichText 
 					tagName="div"
-					//className={className}
+					className={ { 'high-contrast': highContrast } }
 					onChange={onChangeContent}
 					style={{textAlign:textAlignment}}
 					value={content}
