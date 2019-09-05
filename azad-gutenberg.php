@@ -24,7 +24,7 @@ if(! defined('ABSPATH')) exit;
             wp_register_script(
                 'azad-gutenberg',
                 plugins_url('/build/index.js',__FILE__),
-                array('wp-blocks','wp-element','wp-components','wp-i18n'),
+                array('wp-element','wp-blocks','wp-components','wp-editor','wp-i18n'),
 				filemtime(plugin_dir_path(__FILE__).'/build/index.js'),
                 true
             );
