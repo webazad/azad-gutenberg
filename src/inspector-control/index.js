@@ -9,9 +9,9 @@ const { RichText, BlockControls, AlignmentToolbar, BlockAlignmentToolbar,Inspect
 const { __ } = wp.i18n;
 //const { something } = wp.data;
 
-export default registerBlockType('azad/azad-inspector-control-fields',{
-	title: __('Azad Inspector Control Fields','azad-gutenberg'),
-    description: __('Azad inspector conrol fields is a ','azad-gutenberg'),
+export default registerBlockType('azad/azad-inspector-control',{
+	title: __('Azad Inspector Control','azad-gutenberg'),
+    description: __('Azad inspector conrol is a ','azad-gutenberg'),
 	icon: {
 		background: 'rgba(254, 243, 224, 0.52)',
         src: icon,

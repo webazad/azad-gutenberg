@@ -1,4 +1,5 @@
 //import classnames from 'classnames';
+import Inspector from './inspector';
 import icon from './icon';
 //import './style.scss';
 //import './editor.scss';
@@ -9,9 +10,9 @@ const { RichText, BlockControls, AlignmentToolbar, BlockAlignmentToolbar,Inspect
 const { __ } = wp.i18n;
 //const { something } = wp.data;
 
-export default registerBlockType('azad/azad-inspector-control',{
-	title: __('Azad Inspector Control','azad-gutenberg'),
-    description: __('Azad inspector conrol is a ','azad-gutenberg'),
+export default registerBlockType('azad/azad-ins-control-fields',{
+	title: __('Azad Inspector Control Fields','azad-gutenberg'),
+    description: __('Azad inspector conrol fields is a common  ','azad-gutenberg'),
 	icon: {
 		background: 'rgba(254, 243, 224, 0.52)',
         src: icon,
@@ -40,25 +41,7 @@ export default registerBlockType('azad/azad-inspector-control',{
 		}
 		return (
 			<div className={className}>
-				<InspectorControls>
-                    <PanelBody
-                        title={ __( 'High Contrast', 'jsforwpblocks' ) }
-                    >
-                        <PanelRow>
-                            <label
-                                htmlFor="high-contrast-form-toggle"
-                            >
-                                { __( 'High Contrast', 'jsforwpblocks' ) }
-                            </label>
-                            <FormToggle
-                                id="high-contrast-form-toggle"
-                                label={ __( 'High Contrast', 'jsforwpblocks' ) }
-                                checked={ highContrast }
-                                onChange={ toggleHighContrast }
-                            />
-                        </PanelRow>
-                    </PanelBody>
-                </InspectorControls>          
+				<Inspector {...{ setAttributes, ...props }} />
 				<BlockControls>
 					<AlignmentToolbar
 						value={textAlignment}
