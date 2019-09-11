@@ -5,8 +5,8 @@ import icon from './icon';
 //import './editor.scss';
 //const { Component } = wp.element;
 const { registerBlockType } = wp.blocks;
-const { Dashicon, Toolbar, Button, Tooltip, PanelBody, PanelRow, FormToggle } = wp.components;
-const { RichText, BlockControls, AlignmentToolbar, BlockAlignmentToolbar,InspectorControls } = wp.editor;
+//const { Dashicon, Toolbar, Button, Tooltip } = wp.components;
+const { RichText, BlockControls, AlignmentToolbar, BlockAlignmentToolbar, InspectorControls } = wp.editor;
 const { __ } = wp.i18n;
 //const { something } = wp.data;
 
@@ -47,15 +47,6 @@ export default registerBlockType('azad/azad-ins-control-fields',{
 						value={textAlignment}
 						onChange={textAlignment=>setAttributes({textAlignment})}
 					/>
-					<Toolbar>
-						<Tooltip text={ __( 'High Contrast', 'jsforwpblocks' )  }>
-							<Button 
-								className={ { 'is-active': highContrast }}
-								onClick={ () => setAttributes( { highContrast: ! highContrast } ) }>
-								{icon}
-							</Button>
-						</Tooltip>
-					</Toolbar>
 				</BlockControls>
 				<RichText 
 					tagName="div"

@@ -1,13 +1,7 @@
-//import classnames from 'classnames';
 import icon from './icon';
-//import './style.scss';
-//import './editor.scss';
-//const { Component } = wp.element;
 const { registerBlockType } = wp.blocks;
-//const { Button, CheckboxControl, RadioControl, RangeControl, TextControll, TextareaControll, ToggleCOntrol, SelectControl } = wp.components;
 const { RichText, BlockControls, AlignmentToolbar } = wp.editor;
 const { __ } = wp.i18n;
-//const { something } = wp.data;
 
 export default registerBlockType('azad/azad-multiline',{
 	title: __('Azad Multiline','azad-gutenberg'),

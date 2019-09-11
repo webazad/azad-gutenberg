@@ -31,7 +31,7 @@ if(! defined('ABSPATH')) exit;
             // GUTENBERG BLOCK EDITOR STYLE
             wp_register_style(
                 'azad-gutenberg',
-                plugins_url('/azad-gutenberg.css',__FILE__),
+                plugins_url('/assets/css/blocks.editor.css',__FILE__),
                 array('wp-edit-blocks'),
                 filemtime(plugin_dir_path(__FILE__).'/assets/css/blocks.editor.css'),
                 'all'
@@ -39,7 +39,7 @@ if(! defined('ABSPATH')) exit;
             // FRONT END STYLE
             wp_register_style(
                 'azad-style',
-                plugins_url('style.css',__FILE__),
+                plugins_url('/assets/css/blocks.style.css',__FILE__),
                 array('wp-edit-blocks'),
                 filemtime(plugin_dir_path(__FILE__).'/assets/css/blocks.style.css'),
                 'all'
